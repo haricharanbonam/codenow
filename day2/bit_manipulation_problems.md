@@ -21,6 +21,18 @@ class Chu{
         }
         return n;
     }
+    static int toggleBit(int n , int p)
+    {
+        int val = getBit(n, p);
+        if(val==0)
+        {
+            setBit(n, p);
+        }
+        else
+        {
+            clearBit(n, p);
+        }
+    }
     // return (1<<p)^n;
     public static void main(String args[])
     {
@@ -35,6 +47,8 @@ class Chu{
         System.out.println(clearBit(5,0));
         System.out.println(clearBit(5,2));
         System.out.println(clearBit(5,1));
+
+
     }
 }
 ```
