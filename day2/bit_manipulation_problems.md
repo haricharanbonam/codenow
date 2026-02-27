@@ -1,9 +1,10 @@
-# Problem 1 : Get, Set , Clear Bits 
-``` java
-class Chu{
+# Bit Manipulation
+## Check Set bit, Set bit , Clear Bit
+```java
     static int getBit(int n ,int p)
     {
         // get its bit
+        
         return (1<<p)&n;
     }
     static int setBit(int n , int p)
@@ -21,6 +22,9 @@ class Chu{
         }
         return n;
     }
+```
+## Toggle Bit 
+```java
     static int toggleBit(int n , int p)
     {
         // int val = getBit(n, p);
@@ -32,25 +36,23 @@ class Chu{
         // {
         //    return clearBit(n, p);
         // }
-        return (1<<p)^n;
+        return (1<<p)^n; //can just use this
     }
-    // return (1<<p)^n;
-    public static void main(String args[])
+```
+## Count Ones
+```java
+    static int countOnes(int n)
     {
-        System.out.println(getBit(5,0)==0?0:1); 
-        System.out.println(getBit(5,1)==0?0:1);
-        System.out.println(getBit(5,2)==0?0:1);
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println();
-        System.out.println(setBit(5, 1));
-        System.out.println(clearBit(5,0));
-        System.out.println(clearBit(5,2));
-        System.out.println(toggleBit(5,2));
-        System.out.println(toggleBit(10, 1));
-
-
+        int k =1;
+        int ct=0;
+        while(n!=0)
+        {
+                ct+=(1&n)==0?0:1;
+                // n=n>>1;
+                n/=2;
+                // we can also use n/=2 but its not as fast as right shift, 
+        }
+        return ct;
     }
-}
+
 ```
