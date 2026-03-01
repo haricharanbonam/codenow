@@ -60,6 +60,42 @@ class Solution {
     }
 }
 ```
-# Isomorphic Strings 2 Optimal
+# Isomorphic Strings  Optimal
 ```java
+class Solution {
+    // in case it only supports the lower case characters
+    // TIME : O(N)
+    // SPACE : 0(1)
+    public boolean isIsomorphic(String s, String t) {
+        int n = s.length();
+        if(n!=t.length())
+        {
+            return false;
+        }
+        int f[] = new int[128];
+        boolean ref[]=new boolean[128];
+
+        for(int i=0;i<n;i++)
+        {
+            char x = s.charAt(i);
+            if(f[x]==0)
+            {
+                if(ref[t.charAt(i)])
+                {
+                    return false;
+                }
+                f[x]=(t.charAt(i));
+                ref[t.charAt(i)]=true;
+            }
+            else
+            {
+                if((t.charAt(i))!=f[x])
+                {
+                        return false;
+                }
+            }
+        }
+        return true;
+    }
+}
 ```
