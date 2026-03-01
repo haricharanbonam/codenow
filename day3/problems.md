@@ -99,3 +99,49 @@ class Solution {
     }
 }
 ```
+# Find all valid anagrams in a String
+```java
+class Solution {
+// SPACE : O(1)
+// TIME : O(N)
+    public List<Integer> findAnagrams(String s, String p) {
+        
+        int n = s.length();
+        int k =p.length();
+        if(k>n)
+        {
+            return new ArrayList<>();
+        }
+        int ct=0;
+        int f[]= new int[26];
+        int pp[]= new int[26];
+        int win[] = new int[26];
+        for(int i=0;i<k;i++)
+        {
+            pp[p.charAt(i)-97]+=1;
+        }
+        List<Integer> l = new ArrayList<>();
+        int cc=0;
+        for(int i=0;i<k;i++)
+        {
+            char x = s.charAt(i);
+            win[x-97]+=1;
+        }
+        if(Arrays.equals(win,pp))
+        {
+            l.add(0);
+        }
+        for(int i=1;i<=n-k;i++)
+        {
+            win[s.charAt(i-1)-97]-=1;
+            win[s.charAt(i+k-1)-97]+=1;
+            if(Arrays.equals(win,pp))
+            {
+                l.add(i);
+            }
+        }
+        return l;
+        }
+    
+}
+```
