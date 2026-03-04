@@ -9,51 +9,54 @@
 // if it is positive only then just go for variable sliding window
 import java.util.*;
 class Main {
-    // static int maxlen(int arr[], int k)
-    // {
-    //     Map<Integer,Integer> mp = new HashMap<>();
-    //     mp.put(0,-1);
-    //     int s=0;
-    //     int n = arr.length;
-    //     int ml=Integer.MIN_VALUE;
-    //     for(int i=0;i<n;i++)
-    //     {
-    //         s+=arr[i];
-            
-    //         int p =(s-k);
-    //         if(mp.containsKey(p))
-    //         {
-    //           int l=i-mp.get(p);
-    //           ml=Math.max(ml,l);
-    //         }
-    //         else 
-    //         {
-    //             mp.put(s,i);
-    //         }
-    //     }
-    //     return ml;
-        
-    // }
-    static int maxlen(int arr[],int k)
+    static int maxlen(int arr[], int k)
     {
-        //brute force
+        Map<Integer,Integer> mp = new HashMap<>();
+        mp.put(0,-1);
+        int s=0;
         int n = arr.length;
-        int mx=Integer.MIN_VALUE;
+        int ml=Integer.MIN_VALUE;
         for(int i=0;i<n;i++)
         {
-            int curr=0;
-            for(int j=i;j<n;j++)
+            s+=arr[i];
+            int p =(s-k);
+            if(mp.containsKey(p))
             {
-                curr+=arr[j];
-                if(curr==k)
-                {
-                    mx=Math.max(mx,(j-i+1));
-                }
+              int l=i-mp.get(p);
+              ml=Math.max(ml,l);
             }
-            
+            else 
+            {
+                mp.put(s,i);
+            }
         }
-        return mx;
+        return ml;
+        
     }
+    
+    //brute force
+    // O(n*n)
+    //o(1) space
+    // static int maxlen(int arr[],int k)
+    // {
+    //     //brute force
+    //     int n = arr.length;
+    //     int mx=Integer.MIN_VALUE;
+    //     for(int i=0;i<n;i++)
+    //     {
+    //         int curr=0;
+    //         for(int j=i;j<n;j++)
+    //         {
+    //             curr+=arr[j];
+    //             if(curr==k)
+    //             {
+    //                 mx=Math.max(mx,(j-i+1));
+    //             }
+    //         }
+            
+    //     }
+    //     return mx;
+    // }
     public static void main(String[] args) {
         int arr[]={-1,1,1,2,3};
         System.out.println(maxlen(arr,3));
